@@ -41,3 +41,18 @@ bin_ip = "00001010000000010000000111000011"
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+ip_addr = input()
+ip, mask = ip_addr.split('/')
+oct1,oct2,oct3,oct4 = list(map(int,ip.split('.')))
+mask_bytes = "1" * int(mask) + "0" * (32-int(mask))
+mask1,mask2,mask3,mask4 = int(mask_bytes[:8],2), int(mask_bytes[8:16],2), int(mask_bytes[16:24],2), int(mask_bytes[24:32],2)
+oct1,oct2,oct3,oct4 = oct1 & mask1, oct2 & mask2, oct3 & mask3, oct4 & mask4
+print(f'''Network:
+{oct1:<8}  {oct2:<8}  {oct3:<8}  {oct4:<8}
+{oct1:08b}  {oct2:08b}  {oct3:08b}  {oct4:08b}
+
+Mask
+/{mask}
+{mask1:<8}  {mask2:<8}  {mask3:<8}  {mask4:<8}
+{mask1:08b}  {mask2:<08b}  {mask3:<08b}  {mask4:<08b}''')
+
