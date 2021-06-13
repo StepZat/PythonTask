@@ -12,3 +12,16 @@
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+ip = input()
+oct1 = int(ip.split('.')[0])
+if oct1>=1 and oct1<=223:
+   print("unicast")
+elif oct1>=224 and oct1<=239:
+   print("multicast")
+elif ip == "255.255.255.255":
+    print("local broadcast")
+elif ip == "0.0.0.0":
+    print("unassigned")
+else:
+    print("unused")
+
